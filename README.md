@@ -4,7 +4,7 @@ This library provides a clean, flexible and robust way to integrate with the Sen
 
 ## Installation
 ```bash
-composer require vendor/sensebank-installment-sdk
+composer require yuriizee/sensebank-installment-sdk
 ```
 
 ## Features
