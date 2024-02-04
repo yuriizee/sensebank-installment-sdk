@@ -1,0 +1,34 @@
+{
+    "name": "yuriizee/sensebank-installment-sdk",
+    "description": "sensebank-installment-sdk",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yuriizee\\SenseBankInstallmentSDK\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yurii Zub",
+            "email": "yuriyzee@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.2",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "7.9.x-dev"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "7.1.x-dev",
+        "nunomaduro/phpinsights": "dev-master",
+        "phpunit/phpunit": "10.5.x-dev"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
