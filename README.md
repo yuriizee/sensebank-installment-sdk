@@ -1,5 +1,7 @@
 # SenseBank Installment SDK
 
+![build workflow](https://github.com/yuriizee/sensebank-installment-sdk/actions/workflows/php.yml/badge.svg)
+
 This library provides a clean, flexible and robust way to integrate with the SenseBank Installment SDK. It wraps up various SDK features into easy-to-use PHP classes and methods, minimizing the effort required to interact with the SDK and improving the maintainability of your project.
 
 ## Installation
