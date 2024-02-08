@@ -1,11 +1,16 @@
 {
     "name": "yuriizee/sensebank-installment-sdk",
-    "description": "sensebank-installment-sdk",
+    "description": "PHP SDK library for Sensebank installment",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Yuriizee\\SenseBankInstallmentSDK\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -14,21 +19,31 @@
             "email": "yuriyzee@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=8.2",
         "ext-json": "*",
         "ext-curl": "*",
-        "guzzlehttp/guzzle": "7.9.x-dev"
+        "guzzlehttp/guzzle": "^7.7"
     },
     "require-dev": {
-        "symfony/var-dumper": "7.1.x-dev",
-        "nunomaduro/phpinsights": "dev-master",
-        "phpunit/phpunit": "10.5.x-dev"
+        "symfony/var-dumper": "^7.0",
+        "nunomaduro/phpinsights": "^2.11",
+        "pestphp/pest": "^2.33",
+        "mockery/mockery": "^1.6",
+        "pestphp/pest-plugin-faker": "^2.0",
+        "php-http/mock-client": "^1.6"
     },
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
+    },
+    "scripts": {
+        "analyze": "vendor/bin/phpinsights -n",
+        "csfix": "vendor/bin/phpinsights -n --fix",
+        "test": "vendor/bin/pest --coverage --min=40"
     }
 }

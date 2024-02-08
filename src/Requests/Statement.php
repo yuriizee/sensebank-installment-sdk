@@ -12,7 +12,7 @@ final class Statement extends BaseRequest
 {
     public function sendStatementTaskByAccount(SendStatementRequest $request): SendStatementResponse
     {
-        $request = $this->client->getClient()->post(
+        $request = $this->http()->post(
             'sendStatementTaskByAccount',
             [RequestOptions::JSON => $request->toArray()]
         );

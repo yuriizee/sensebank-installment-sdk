@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 namespace Yuriizee\SenseBankInstallmentSDK;
 
+use Psr\Http\Client\ClientInterface;
+use Yuriizee\SenseBankInstallmentSDK\Exceptions\CannotUnSerialize;
 use Yuriizee\SenseBankInstallmentSDK\Requests\Guarantee;
 use Yuriizee\SenseBankInstallmentSDK\Requests\Order;
 use Yuriizee\SenseBankInstallmentSDK\Requests\Statement;
 
-final class InstallmentSDK
+final class InstallmentSDK implements Contract
 {
     private static self|null $instance = null;
-    private Client $httpClient;
 
-    private function __construct(Config $config)
-    {
-        $this->httpClient = new Client(
-            $config->getUrl(),
-            $config->getPartnerId(),
-            $config->getPassword()
-        );
+    private function __construct(
+        private readonly Config $config,
+        private readonly ClientInterface $httpClient
+    ) {
     }
 
     private function __clone(): void
@@ -28,13 +26,15 @@ final class InstallmentSDK
 
     public function __wakeup(): void
     {
-        throw new \Exception('Cannot unserialize a singleton.');
+        throw new CannotUnSerialize();
     }
 
-    public static function getInstance(Config $config): self
-    {
+    public static function getInstance(
+        Config $config,
+        ClientInterface $client,
+    ): self {
         if (self::$instance === null) {
-            self::$instance = new self($config);
+            self::$instance = new self($config, $client);
         }
 
         return self::$instance;
@@ -42,16 +42,21 @@ final class InstallmentSDK
 
     public function order(): Order
     {
-        return new Order($this->httpClient);
+        return new Order(client: $this->getHttpClient(), partnerId: $this->config->getPartnerId());
     }
 
     public function guarantee(): Guarantee
     {
-        return new Guarantee($this->httpClient);
+        return new Guarantee(client: $this->getHttpClient(), partnerId: $this->config->getPartnerId());
     }
 
     public function statement(): Statement
     {
-        return new Statement($this->httpClient);
+        return new Statement(client: $this->getHttpClient());
+    }
+
+    public function getHttpClient(): ClientInterface
+    {
+        return $this->httpClient;
     }
 }

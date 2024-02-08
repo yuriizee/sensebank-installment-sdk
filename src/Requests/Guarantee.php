@@ -12,8 +12,8 @@ final class Guarantee extends BaseRequest
 {
     public function getGuarantee(GetGuaranteeRequest $request): GetGuaranteeResponse
     {
-        $request = $this->client->getClient()->get(
-            'getGuarantee/' . $this->client->getPartnerId(),
+        $request = $this->http()->get(
+            'getGuarantee/' . $this->getPartnerId(),
             [RequestOptions::QUERY => $request->toArray()]
         );
 

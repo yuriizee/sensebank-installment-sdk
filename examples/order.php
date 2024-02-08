@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use Yuriizee\SenseBankInstallmentSDK\Client;
 use Yuriizee\SenseBankInstallmentSDK\Config;
 use Yuriizee\SenseBankInstallmentSDK\DataObjects\Order\CreateOrderRequest;
-use Yuriizee\SenseBankInstallmentSDK\DataObjects\Statement\SendStatementRequest;
 use Yuriizee\SenseBankInstallmentSDK\Enums\OrderLimits;
 use Yuriizee\SenseBankInstallmentSDK\Helper\Money;
 use Yuriizee\SenseBankInstallmentSDK\InstallmentSDK;
@@ -16,8 +16,12 @@ $config = new Config(
     partnerId: 'partner',
     password: '!PaRt_Ne09_R#'
 );
+/**
+ * You can create instance with own Psr\Http\Client\ClientInterface implemented class
+ */
+$client = (new Client($config))->getClient();
 
-$sdk = InstallmentSDK::getInstance($config);
+$sdk = InstallmentSDK::getInstance($config, $client);
 
 $request = new CreateOrderRequest(
     mPhone: '+380670000000',
@@ -32,15 +36,3 @@ $request = new CreateOrderRequest(
 );
 
 $response = $sdk->order()->createOrder($request);
-dd($request, $response);
-
-$request = new SendStatementRequest(
-    partnerId: $config->getPartnerId(),
-    account: 'UA713003460000026001015531701',
-    dateFrom: '2022-06-06',
-    dateTo: '2022-06-30',
-    callBackURL: 'https://example.dev'
-);
-$response = $sdk->statement()->sendStatementTaskByAccount($request);
-
-dd($request, $response);

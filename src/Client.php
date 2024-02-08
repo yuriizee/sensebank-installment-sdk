@@ -7,25 +7,20 @@ namespace Yuriizee\SenseBankInstallmentSDK;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 
 final class Client
 {
-    private GuzzleClient $client;
+    private ClientInterface $client;
+
     public function __construct(
-        private readonly string $url,
-        private readonly string|int $partnerId,
-        private readonly string $password,
+        private readonly Config $config
     ) {
         $this->client = $this->configureClient();
     }
 
-    public function getPartnerId(): string|int
-    {
-        return $this->partnerId;
-    }
-
-    public function getClient(): GuzzleClient
+    public function getClient(): ClientInterface
     {
         return $this->client;
     }
@@ -47,9 +42,9 @@ final class Client
         $handlerStack = HandlerStack::create();
         $this->applyMiddleware($handlerStack);
         return new GuzzleClient([
-            'base_uri' => $this->url,
+            'base_uri' => $this->config->getUrl(),
             'handler' => $handlerStack,
-            'auth' => [$this->partnerId, $this->password],
+            'auth' => [$this->config->getPartnerId(), $this->config->getPassword()],
             'headers' => [
                 'Accept' => 'application/json',
             ],

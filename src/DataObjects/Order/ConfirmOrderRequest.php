@@ -8,7 +8,7 @@ use Yuriizee\SenseBankInstallmentSDK\DataObjects\DataObject;
 
 final class ConfirmOrderRequest extends DataObject
 {
-    private function __construct(
+    public function __construct(
         public readonly null|string|int $orderId = null,
         public readonly null|string|int $messageId = null,
     ) {

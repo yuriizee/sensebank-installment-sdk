@@ -24,8 +24,8 @@ final class Order extends BaseRequest
 {
     public function createOrder(CreateOrderRequest $request): CreateOrderResponse
     {
-        $request = $this->client->getClient()->post(
-            'createOrder/' . $this->client->getPartnerId(),
+        $request = $this->http()->post(
+            'createOrder/' . $this->getPartnerId(),
             [RequestOptions::JSON => $request->toArray()]
         );
 
@@ -34,8 +34,8 @@ final class Order extends BaseRequest
 
     public function cancelOrder(CancelOrderRequest $request): CancelOrderResponse
     {
-        $request = $this->client->getClient()->post(
-            'cancelOrder/' . $this->client->getPartnerId(),
+        $request = $this->http()->post(
+            'cancelOrder/' . $this->getPartnerId(),
             [RequestOptions::JSON => $request->toArray()]
         );
 
@@ -44,8 +44,8 @@ final class Order extends BaseRequest
 
     public function confirmOrder(ConfirmOrderRequest $request): ConfirmOrderResponse
     {
-        $request = $this->client->getClient()->post(
-            'confirmOrder/' . $this->client->getPartnerId(),
+        $request = $this->http()->post(
+            'confirmOrder/' . $this->getPartnerId(),
             [RequestOptions::JSON => $request->toArray()]
         );
 
@@ -54,8 +54,8 @@ final class Order extends BaseRequest
 
     public function reversalOrder(ReversalOrderRequest $request): ReversalOrderResponse
     {
-        $request = $this->client->getClient()->post(
-            'reversalOrder/' . $this->client->getPartnerId(),
+        $request = $this->http()->post(
+            'reversalOrder/' . $this->getPartnerId(),
             [RequestOptions::JSON => $request->toArray()]
         );
 
@@ -64,8 +64,8 @@ final class Order extends BaseRequest
 
     public function checkReversal(CheckReversalOrderRequest $request): CheckReversalOrderResponse
     {
-        $request = $this->client->getClient()->get(
-            'checkReversal/' . $this->client->getPartnerId(),
+        $request = $this->http()->get(
+            'checkReversal/' . $this->getPartnerId(),
             [RequestOptions::QUERY => $request->toArray()]
         );
 
@@ -74,8 +74,8 @@ final class Order extends BaseRequest
 
     public function getReversal(GetReversalOrderRequest $request): GetReversalOrderResponse
     {
-        $request = $this->client->getClient()->get(
-            'getReversal/' . $this->client->getPartnerId(),
+        $request = $this->http()->get(
+            'getReversal/' . $this->getPartnerId(),
             [RequestOptions::QUERY => $request->toArray()]
         );
 
@@ -84,8 +84,8 @@ final class Order extends BaseRequest
 
     public function getOrder(GetOrderRequest $request): GetOrderResponse
     {
-        $request = $this->client->getClient()->get(
-            'getOrder/' . $this->client->getPartnerId(),
+        $request = $this->http()->get(
+            'getOrder/' . $this->getPartnerId(),
             [RequestOptions::QUERY => $request->toArray()]
         );
 
