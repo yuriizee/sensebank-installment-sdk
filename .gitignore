@@ -5,3 +5,4 @@
 /.idea
 docs/node_modules/
 docs/.vitepress/cache/
+cache
