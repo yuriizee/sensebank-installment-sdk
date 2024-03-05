@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "SenseBank SDK PHP",
   description: "PHP SDK kit for sensebank installment",
+  base: '/sensebank-installment-sdk/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
