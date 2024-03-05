@@ -3,3 +3,6 @@
 /composer.lock
 /.phpunit.result.cache
 /.idea
+docs/node_modules/
+docs/package-lock.json
+docs/.vitepress/cache/
