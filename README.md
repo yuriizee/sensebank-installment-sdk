@@ -1,6 +1,11 @@
 # SenseBank Installment SDK
 
-![build workflow](https://github.com/yuriizee/sensebank-installment-sdk/actions/workflows/php.yml/badge.svg)
+<p align="center">
+<a href="https://github.com/yuriizee/sensebank-installment-sdk/actions"><img src="https://github.com/yuriizee/sensebank-installment-sdk/actions/workflows/test.yml/badge.svg" alt="Tests"></a>
+<a href="https://packagist.org/packages/yuriizee/sensebank-installment-sdk"><img src="https://img.shields.io/packagist/dt/yuriizee/sensebank-installment-sdk" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/yuriizee/sensebank-installment-sdk"><img src="https://img.shields.io/packagist/v/yuriizee/sensebank-installment-sdk" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/yuriizee/sensebank-installment-sdk"><img src="https://img.shields.io/packagist/l/yuriizee/sensebank-installment-sdk" alt="License"></a>
+</p>
 
 This library provides a clean, flexible and robust way to integrate with the SenseBank Installment SDK. It wraps up various SDK features into easy-to-use PHP classes and methods, minimizing the effort required to interact with the SDK and improving the maintainability of your project.
 
